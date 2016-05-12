@@ -29,7 +29,7 @@
     },
     "autoload" : {
         "files" : [
-            "registration.php"
+            "src/module-elasticsuite-cms/registration.php"
         ],
         "psr-4" : {
             "Smile\\ElasticSuiteCms\\" : "src/module-elasticsuite-cms"
