@@ -32,7 +32,7 @@
             "registration.php"
         ],
         "psr-4" : {
-            "Smile\\ElasticSuiteCms\\" : ""
+            "Smile\\ElasticSuiteCms\\" : "src/module-elasticsuite-cms"
         }
     }
 }
