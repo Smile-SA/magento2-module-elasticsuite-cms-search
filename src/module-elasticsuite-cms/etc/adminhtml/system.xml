@@ -1,0 +1,38 @@
+<!--
+/**
+ * Smile ElasticSuiteCms module configuration
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Smile Searchandising Suite to newer
+ * versions in the future.
+ *
+ * @category  Smile
+ * @package   Smile_ElasticSuiteCms
+ * @author    Fanny DECLERCK <fadec@smile.fr>
+ * @copyright 2016 Smile
+ * @license   Apache License Version 2.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="smile_elasticsuite_cms" translate="label" sortOrder="210">
+            <label>Smile ElasticSuite Cms Search</label>
+        </tab>
+        <section id="smile_elasticsuite_cms_search" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>CMS settings</label>
+            <tab>smile_elasticsuite_cms</tab>
+            <resource>Magento_Backend::smile_elasticsuite_cms</resource>
+
+            <group id="cms_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Setting</label>
+                <field id="nb_result" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max result</label>
+                    <validate>integer</validate>
+                    <comment><![CDATA[Maximum number of results to display in result page.]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

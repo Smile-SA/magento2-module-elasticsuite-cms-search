@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Smile Elastic Suite to newer
+ * versions in the future.
+ *
+ *
+ * @category  Smile
+ * @package   Smile_ElasticSuiteCms
+ * @author    Fanny DECLERCK <fadec@smile.fr>
+ * @copyright 2016 Smile
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <smile_elasticsuite_cms_search>
+            <cms_settings>
+                <nb_result>10</nb_result>
+            </cms_settings>
+        </smile_elasticsuite_cms_search>
+    </default>
+</config>

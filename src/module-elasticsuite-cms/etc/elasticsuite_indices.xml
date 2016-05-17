@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Smile_ElasticSuiteCms indices configuration.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Smile Elastic Suite to newer
+ * versions in the future.
+ *
+ *
+ * @category  Smile
+ * @package   Smile_ElasticSuiteCms
+ * @author    Fanny DECLERCK <fadec@smile.fr>
+ * @copyright 2016 Smile
+ * @license   Open Software License ("OSL") v. 3.0
+ */
+ -->
+<indices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Smile_ElasticSuiteCore:etc/elasticsuite_indices.xsd">
+    <index identifier="cms_page" defaultSearchType="page">
+        <type name="page">
+            <mapping>
+                <!-- Static fields handled by the base indexer (not datasource) -->
+                <field name="page_id" type="integer" />
+                <field name="store_id" type="integer" />
+                <field name="page.title" type="string">
+                    <isSearchable>1</isSearchable>
+                    <isUsedInSpellcheck>1</isUsedInSpellcheck>
+                </field>
+                <field name="page.content_heading" type="string">
+                    <isSearchable>1</isSearchable>
+                    <isUsedInSpellcheck>1</isUsedInSpellcheck>
+                </field>
+                <field name="page.content" type="string">
+                    <isSearchable>1</isSearchable>
+                </field>
+                <field name="page.meta_keywords" type="string">
+                    <isSearchable>1</isSearchable>
+                </field>
+                <field name="page.meta_description" type="string">
+                    <isSearchable>1</isSearchable>
+                </field>
+            </mapping>
+        </type>
+    </index>
+</indices>
