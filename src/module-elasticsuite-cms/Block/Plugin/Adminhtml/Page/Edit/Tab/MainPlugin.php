@@ -15,6 +15,7 @@ namespace Smile\ElasticSuiteCms\Block\Plugin\Adminhtml\Page\Edit\Tab;
 use Magento\Cms\Block\Adminhtml\Page\Edit\Tab\Main;
 use Magento\Framework\Data\Form;
 use Magento\Config\Model\Config\Source\Yesno;
+use Magento\Framework\Registry;
 
 /**
  * Plugin that happend custom fields dedicated to search configuration
@@ -34,13 +35,20 @@ class MainPlugin
     private $booleanSource;
 
     /**
+     * @var core registry
+     */
+    private $coreRegistry;
+
+    /**
      * Class constructor
      *
-     * @param Yesno  $booleanSource The YesNo source.
+     * @param Yesno    $booleanSource The YesNo source.
+     * @param Registry $registry      Core registry.
      */
-    public function __construct(Yesno $booleanSource)
+    public function __construct(Yesno $booleanSource, Registry $registry)
     {
         $this->booleanSource = $booleanSource;
+        $this->coreRegistry  = $registry;
     }
 
     /**
@@ -65,10 +73,13 @@ class MainPlugin
                 'title' => __('Is searchable'),
                 'name'  => 'is_searchable',
                 'required' => true,
-                'values' => $this->booleanSource->toOptionArray(),
+                'options' => $this->booleanSource->toArray(),
             ],
             'is_active'
         );
+
+        $model = $this->coreRegistry->registry('cms_page');
+        $form->setValues($model->getData());
 
         return $block;
     }
