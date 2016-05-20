@@ -13,8 +13,11 @@
 namespace Smile\ElasticSuiteCms\Model\Page\Indexer;
 
 use Magento\Framework\Search\Request\DimensionFactory;
+use Magento\Framework\Indexer\SaveHandler\IndexerInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext\Action\Full;
+use Magento\Framework\Indexer\ActionInterface;
+use Magento\Framework\Mview\ActionInterface as MviewActionInterface;
 
 /**
  * Categories fulltext indexer
@@ -23,12 +26,12 @@ use Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext\Action\Full;
  * @package  Smile_ElasticSuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
-class Fulltext implements \Magento\Framework\Indexer\ActionInterface, \Magento\Framework\Mview\ActionInterface
+class Fulltext implements ActionInterface, MviewActionInterface
 {
     /**
      * @var string
      */
-    const INDEXER_ID = 'elasticsuite_cms_fulltext';
+    const INDEXER_ID = 'elasticsuite_cms_page_fulltext';
 
     /** @var array index structure */
     protected $data;
@@ -55,14 +58,14 @@ class Fulltext implements \Magento\Framework\Indexer\ActionInterface, \Magento\F
 
     /**
      * @param Full                  $fullAction       The full index action
-     * @param IndexerHandler        $indexerHandler   The index handler
+     * @param IndexerInterface      $indexerHandler   The index handler
      * @param StoreManagerInterface $storeManager     The Store Manager
      * @param DimensionFactory      $dimensionFactory The dimension factory
      * @param array                 $data             The data
      */
     public function __construct(
         Full $fullAction,
-        IndexerHandler $indexerHandler,
+        IndexerInterface $indexerHandler,
         StoreManagerInterface $storeManager,
         DimensionFactory $dimensionFactory,
         array $data
@@ -83,8 +86,6 @@ class Fulltext implements \Magento\Framework\Indexer\ActionInterface, \Magento\F
      */
     public function execute($ids)
     {
-$logger = \Magento\Framework\App\ObjectManager::getInstance()->create('\Psr\Log\LoggerInterface');
-$logger->debug('execute ');
         $storeIds = array_keys($this->storeManager->getStores());
         /** @var IndexerHandler $saveHandler */
         $saveHandler = $this->indexerHandler;

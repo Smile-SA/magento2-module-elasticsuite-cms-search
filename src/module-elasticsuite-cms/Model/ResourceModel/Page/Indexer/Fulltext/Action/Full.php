@@ -13,7 +13,7 @@
 
 namespace Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action;
 
-use Smile\ElasticSuiteCatalog\Model\ResourceModel\Eav\Indexer\AbstractIndexer;
+use Smile\ElasticSuiteCore\Model\ResourceModel\Indexer\AbstractIndexer;
 
 /**
  * ElasticSearch category full indexer resource model.
@@ -46,10 +46,9 @@ class Full extends AbstractIndexer
         }
 
         $select->where('p.page_id > ?', $fromId)
+            ->where('p.is_searchable = ?', true)
             ->limit($limit)
             ->order('p.page_id');
-$logger = \Magento\Framework\App\ObjectManager::getInstance()->create('\Psr\Log\LoggerInterface');
-$logger->debug('getSearchableCmsPage ');
         return $this->connection->fetchAll($select);
 
     }
@@ -60,7 +59,7 @@ $logger->debug('getSearchableCmsPage ');
      * @param \Zend_Db_Select $select  Product select to be filtered.
      * @param integer         $storeId Store Id
      *
-     * @return \Smile\ElasticSuiteCatalog\Model\ResourceModel\Product\Indexer\Fulltext\Action\Full Self Reference
+     * @return \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full Self Reference
      */
     private function addIsVisibleInStoreFilter($select, $storeId)
     {
@@ -68,7 +67,7 @@ $logger->debug('getSearchableCmsPage ');
             ['ps' => $this->getTable('cms_page_store')],
             'p.page_id = ps.page_id'
         );
-        $select->where('ps.store_id', $storeId);
+        $select->where('ps.store_id IN (?)', array(0, $storeId));
 
         return $this;
     }

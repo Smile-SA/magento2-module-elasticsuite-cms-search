@@ -13,6 +13,7 @@
 namespace Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext\Action;
 
 use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full as ResourceModel;
+use Magento\Cms\Model\Template\FilterProvider;
 
 /**
  * ElasticSearch categories full indexer
@@ -24,18 +25,25 @@ use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full 
 class Full
 {
     /**
-     * @var \Smile\ElasticSuiteCms\Model\ResourceModel\Product\Indexer\Fulltext\Action\Full
+     * @var \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full
      */
     private $resourceModel;
 
     /**
+     * @var \Magento\Cms\Model\Template\FilterProvider
+     */
+    private $filterProvider;
+
+    /**
      * Constructor.
      *
-     * @param ResourceModel $resourceModel Indexer resource model.
+     * @param ResourceModel  $resourceModel  Indexer resource model.
+     * @param FilterProvider $filterProvider Model template filter provider.
      */
-    public function __construct(ResourceModel $resourceModel)
+    public function __construct(ResourceModel $resourceModel, FilterProvider $filterProvider)
     {
-        $this->resourceModel = $resourceModel;
+        $this->resourceModel  = $resourceModel;
+        $this->filterProvider = $filterProvider;
     }
 
     /**
@@ -52,9 +60,9 @@ class Full
 
         do {
             $cmsPages = $this->getSearchableCmsPage($storeId, $cmsPageIds, $lastCmsPageId);
-
             foreach ($cmsPages as $pageData) {
-                $lastCmsPageId = (int) $pageData['entity_id'];
+                $pageData = $this->processPageData($pageData);
+                $lastCmsPageId = (int) $pageData['page_id'];
                 yield $lastCmsPageId => $pageData;
             }
         } while (!empty($cmsPages));
@@ -73,5 +81,20 @@ class Full
     private function getSearchableCmsPage($storeId, $cmsPageIds = null, $fromId = 0, $limit = 100)
     {
         return $this->resourceModel->getSearchableCmsPage($storeId, $cmsPageIds, $fromId, $limit);
+    }
+
+    /**
+     * Parse template processor cms page content
+     *
+     * @param array $pageData Cms page data.
+     *
+     * @return array
+     */
+    protected function processPageData($pageData)
+    {
+        if (isset($pageData['content'])) {
+            $pageData['content'] = $this->filterProvider->getPageFilter()->filter($pageData['content']);
+        }
+        return $pageData;
     }
 }
