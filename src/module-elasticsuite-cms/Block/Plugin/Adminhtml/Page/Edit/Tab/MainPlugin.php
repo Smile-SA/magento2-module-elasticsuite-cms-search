@@ -5,8 +5,8 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
- * @author    Fanny DECLERCK <fadec@smile.fr>
+ * @package   Smile_ElasticSuiteCatalog
+ * @author    Romain Ruaud <romain.ruaud@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
@@ -23,7 +23,7 @@ use Magento\Framework\Registry;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile_ElasticSuiteCatalog
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class MainPlugin
