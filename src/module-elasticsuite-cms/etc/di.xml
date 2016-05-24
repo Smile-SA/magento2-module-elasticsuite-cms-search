@@ -33,5 +33,4 @@
     <type name="\Magento\Cms\Model\Page">
         <plugin name="smile_elasticsuite_cms_reindex_page_after_cms_page_save" type="\Smile\ElasticSuiteCms\Plugin\Indexer\Page\Save\ReindexPageAfterSave" />
     </type>
-
 </config>
