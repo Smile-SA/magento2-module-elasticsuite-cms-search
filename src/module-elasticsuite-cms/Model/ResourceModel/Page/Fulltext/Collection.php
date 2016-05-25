@@ -111,7 +111,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     public function getSize()
     {
         if ($this->_totalRecords === null) {
-            $this->loadProductCounts();
+            $this->loadCmsPageCounts();
         }
 
         return $this->_totalRecords;
@@ -137,6 +137,16 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         $this->storeId = $storeId;
 
         return $this;
+    }
+
+    /**
+     * Returns current store id.
+     * 
+     * @return int
+     */
+    public function getStoreId()
+    {
+        return $this->storeId;
     }
 
     /**
@@ -173,7 +183,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
 
         return $this;
     }
-    
+
     /**
      * {@inheritDoc}
      */
@@ -283,7 +293,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         $sortOrders = [];
 
         foreach ($this->_orders as $attribute => $direction) {
-            $sortParams = ['direction' => $direction];        
+            $sortParams = ['direction' => $direction];
             $sortField = $this->mapFieldName($attribute);
             $sortOrders[$sortField] = $sortParams;
         }
@@ -309,13 +319,11 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     }
 
     /**
-     * Load product count :
-     *  - collection size
-     *  - number of products by attribute set
+     * Load cms page collection size.
      *
      * @return void
      */
-    private function loadProductCounts()
+    private function loadCmsPageCounts()
     {
         $storeId     = $this->getStoreId();
         $requestName = $this->searchRequestName;

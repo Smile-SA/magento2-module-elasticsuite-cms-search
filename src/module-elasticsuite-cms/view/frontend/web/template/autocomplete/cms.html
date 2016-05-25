@@ -13,12 +13,7 @@
 * @license   Open Software License ("OSL") v. 3.0
 */
 -->
-<dd class="" id="qs-option" role="option" class="product-item" href="<%- data.url %>">
-    <div class="product-shop product-item">
-        <div class="f-fix">
-            <div class="product-primary"><div class="product-name"><%- data.title %></div></div>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="clear"></div>
+<dd class="<%- data.row_class %>" id="qs-option-<%- data.index %>" role="option">
+    <span class="qs-option-name"><%- data.title %></span>
+    <span aria-hidden="true" class="amount"><%- data.num_results %></span>
 </dd>

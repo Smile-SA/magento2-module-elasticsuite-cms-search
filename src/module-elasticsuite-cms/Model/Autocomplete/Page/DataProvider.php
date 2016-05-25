@@ -33,7 +33,7 @@ class DataProvider implements DataProviderInterface
     /**
      * Autocomplete type
      */
-    const AUTOCOMPLETE_TYPE = "page";
+    const AUTOCOMPLETE_TYPE = "cms_page";
 
     /**
      * Autocomplete result item factory
