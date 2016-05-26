@@ -24,7 +24,7 @@
     <type name="Smile\ElasticSuiteCore\Block\Search\Form\Autocomplete">
         <arguments>
             <argument name="rendererList" xsi:type="array">
-                <item name="page" xsi:type="array">
+                <item name="cms_page" xsi:type="array">
                     <item name="title" xsi:type="string">Cms page</item>
                     <item name="template" xsi:type="string">Smile_ElasticSuiteCms/autocomplete/cms</item>
                 </item>
