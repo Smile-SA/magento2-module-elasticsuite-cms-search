@@ -44,7 +44,7 @@ class ReindexPageAfterSave
      * Reindex cms page's data into search engine after saving the cms page
      *
      * @param Page $subject The cms page being reindexed
-     * @param Page $result The parent function we are plugged on
+     * @param Page $result  The parent function we are plugged on
      *
      * @return \Magento\Cms\Model\Page
      */

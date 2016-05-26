@@ -54,7 +54,7 @@ class MainPlugin
     /**
      * Append ES specifics fields into the attribute edit store front tab.
      *
-     * @param Main  $subject The StoreFront tab
+     * @param Main     $subject The StoreFront tab
      * @param \Closure $proceed The parent function
      * @param Form     $form    The form
      *

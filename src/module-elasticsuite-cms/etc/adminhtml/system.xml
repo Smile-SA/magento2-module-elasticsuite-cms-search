@@ -16,21 +16,30 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="smile_elasticsuite_cms" translate="label" sortOrder="210">
-            <label>Smile ElasticSuite Cms Search</label>
-        </tab>
-        <section id="smile_elasticsuite_cms_search" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+
+        <section id="smile_elasticsuite_cms" translate="label" type="text" sortOrder="150" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>CMS settings</label>
-            <tab>smile_elasticsuite_cms</tab>
+            <tab>smile_elasticsuite</tab>
             <resource>Magento_Backend::smile_elasticsuite_cms</resource>
 
             <group id="cms_settings" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Setting</label>
-                <field id="nb_result" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="max_result" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Max result</label>
                     <validate>integer</validate>
-                    <comment><![CDATA[Maximum number of results to display in result page.]]></comment>
+                    <comment><![CDATA[Maximum number of results to display in result block.]]></comment>
+                </field>
+            </group>
+        </section>
+
+        <section id="smile_elasticsuite_autocomplete_settings">
+            <group id="cms_page_autocomplete" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Cms page Autocomplete</label>
+                <field id="max_size" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Max size</label>
+                    <validate>integer</validate>
+                    <comment><![CDATA[Maximum number of cms pages to display in autocomplete results.]]></comment>
                 </field>
             </group>
         </section>

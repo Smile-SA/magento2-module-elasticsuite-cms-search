@@ -33,7 +33,7 @@ class DataProvider implements DataProviderInterface
     /**
      * Autocomplete type
      */
-    const AUTOCOMPLETE_TYPE = "page";
+    const AUTOCOMPLETE_TYPE = "cms_page";
 
     /**
      * Autocomplete result item factory
@@ -121,11 +121,10 @@ class DataProvider implements DataProviderInterface
         if ($pageCollection) {
             foreach ($pageCollection as $page) {
                 $result = [$this->itemFactory->create([
-                    'title' => $page->getTitle(),
-                    'url'   =>  $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                    'type'  => $this->getType()])
+                        'title' => $page->getTitle(),
+                        'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
+                        'type'  => $this->getType(), ]),
                 ];
-
             }
         }
 

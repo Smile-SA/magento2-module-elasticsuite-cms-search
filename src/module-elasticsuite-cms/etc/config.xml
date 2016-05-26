@@ -16,10 +16,16 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <smile_elasticsuite_cms_search>
+        <smile_elasticsuite_autocomplete_settings>
+            <cms_page_autocomplete>
+                <max_size>5</max_size>
+            </cms_page_autocomplete>
+        </smile_elasticsuite_autocomplete_settings>
+
+        <smile_elasticsuite_cms>
             <cms_settings>
-                <nb_result>10</nb_result>
+                <max_result>5</max_result>
             </cms_settings>
-        </smile_elasticsuite_cms_search>
+        </smile_elasticsuite_cms>
     </default>
 </config>

@@ -1,0 +1,27 @@
+<!--
+/**
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade Smile Elastic Suite to newer
+* versions in the future.
+*
+*
+* @category  Smile
+* @package   Smile_ElasticSuiteCms
+* @author    Fanny DECLERCK <fadec@smile.fr>
+* @copyright 2016 Smile
+* @license   Open Software License ("OSL") v. 3.0
+*/
+-->
+<?php if ($block->canShowBlock()): ?>
+   <div class="search results">
+      <h2><?php echo __('Results in cms pages.')?></h2>
+
+       <ul>
+       <?php foreach ($block->getPageCollection() as $currentPage) : ?>
+            <li><?php echo $currentPage->getTitle(); ?></li>
+       <?php endforeach; ?>
+       </ul>
+       <a href="<?php echo $block->getShowAllUrl()?>"><?php echo __('Show more.')?></a>
+   </div>
+<?php endif; ?>

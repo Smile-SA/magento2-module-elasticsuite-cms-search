@@ -13,7 +13,12 @@
 * @license   Open Software License ("OSL") v. 3.0
 */
 -->
-<dd class="<%- data.row_class %>" id="qs-option-<%- data.index %>" role="option">
-    <span class="qs-option-name"><%- data.title %></span>
-    <span aria-hidden="true" class="amount"><%- data.num_results %></span>
-</dd>
+<div class="search results">
+    <h2><?php echo __('Results in cms pages.')?></h2>
+
+    <ul>
+        <?php foreach ($block->getPageCollection() as $currentPage) : ?>
+            <li><?php echo $currentPage->getTitle(); ?></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
