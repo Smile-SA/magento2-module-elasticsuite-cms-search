@@ -71,10 +71,10 @@ class Full
     /**
      * Load a bulk of cms page data.
      *
-     * @param int     $storeId   Store id.
+     * @param int     $storeId    Store id.
      * @param string  $cmsPageIds Cms page ids filter.
-     * @param integer $fromId    Load product with id greater than.
-     * @param integer $limit     Number of product to get loaded.
+     * @param integer $fromId     Load product with id greater than.
+     * @param integer $limit      Number of product to get loaded.
      *
      * @return array
      */
@@ -90,11 +90,12 @@ class Full
      *
      * @return array
      */
-    protected function processPageData($pageData)
+    private function processPageData($pageData)
     {
         if (isset($pageData['content'])) {
             $pageData['content'] = $this->filterProvider->getPageFilter()->filter($pageData['content']);
         }
+
         return $pageData;
     }
 }

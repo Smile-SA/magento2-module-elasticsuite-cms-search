@@ -5,6 +5,7 @@
  * Do not edit or add to this file if you wish to upgrade Smile Elastic Suite to newer
  * versions in the future.
  *
+ * @category  Smile
  * @package   Smile_ElasticSuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
@@ -31,7 +32,7 @@ class Configuration extends AbstractConfiguration
      * @var string
      */
     const CONFIG_XML_PREFIX = 'smile_elasticsuite_cms/cms_settings';
-        
+
     /**
      * Retrieve a configuration value by its key
      *

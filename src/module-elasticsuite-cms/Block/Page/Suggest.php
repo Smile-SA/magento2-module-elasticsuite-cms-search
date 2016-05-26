@@ -59,13 +59,13 @@ class Suggest extends \Magento\Framework\View\Element\Template
      * @param Configuration         $helper                Configuration helper.
      * @param array                 $data                  Data.
      */
-    public function __construct(TemplateContext $context,
+    public function __construct(
+        TemplateContext $context,
         QueryFactory $queryFactory,
         PageCollectionFactory $pageCollectionFactory,
         Configuration $helper,
         array $data = []
-    )
-    {
+    ) {
         parent::__construct($context, $data);
 
         $this->queryFactory   = $queryFactory;
@@ -75,7 +75,7 @@ class Suggest extends \Magento\Framework\View\Element\Template
 
     /**
      * Returns if block can be display.
-     * 
+     *
      * @return bool
      */
     public function canShowBlock()
@@ -114,25 +114,6 @@ class Suggest extends \Magento\Framework\View\Element\Template
     }
 
     /**
-     * Init cms page collection.
-     *
-     * @param PageCollectionFactory $collectionFactory Cms page collection.
-     *
-     * @return mixed
-     */
-    private function initPageCollection($collectionFactory)
-    {
-        $pageCollection = $collectionFactory->create();
-
-        $pageCollection->setPageSize($this->getNumberOfResults());
-
-        $queryText = $this->getQueryText();
-        $pageCollection->addSearchFilter($queryText);
-
-        return $pageCollection;
-    }
-
-    /**
      * Returns query.
      *
      * @return \Magento\Search\Model\Query
@@ -150,5 +131,34 @@ class Suggest extends \Magento\Framework\View\Element\Template
     public function getQueryText()
     {
         return $this->getQuery()->getQueryText();
+    }
+
+    /**
+     * Returns all results url page.
+     *
+     * @return string
+     */
+    public function getShowAllUrl()
+    {
+        return $this->getUrl('elasticsuite_cms/result', ['q' => $this->getQueryText()]);
+    }
+
+    /**
+     * Init cms page collection.
+     *
+     * @param PageCollectionFactory $collectionFactory Cms page collection.
+     *
+     * @return mixed
+     */
+    private function initPageCollection($collectionFactory)
+    {
+        $pageCollection = $collectionFactory->create();
+
+        $pageCollection->setPageSize($this->getNumberOfResults());
+
+        $queryText = $this->getQueryText();
+        $pageCollection->addSearchFilter($queryText);
+
+        return $pageCollection;
     }
 }

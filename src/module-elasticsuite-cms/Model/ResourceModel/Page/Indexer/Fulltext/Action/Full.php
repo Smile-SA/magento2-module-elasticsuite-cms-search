@@ -49,6 +49,7 @@ class Full extends AbstractIndexer
             ->where('p.is_searchable = ?', true)
             ->limit($limit)
             ->order('p.page_id');
+
         return $this->connection->fetchAll($select);
 
     }

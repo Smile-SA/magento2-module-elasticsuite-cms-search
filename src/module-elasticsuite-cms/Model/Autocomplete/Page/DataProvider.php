@@ -121,11 +121,10 @@ class DataProvider implements DataProviderInterface
         if ($pageCollection) {
             foreach ($pageCollection as $page) {
                 $result = [$this->itemFactory->create([
-                    'title' => $page->getTitle(),
-                    'url'   =>  $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                    'type'  => $this->getType()])
+                        'title' => $page->getTitle(),
+                        'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
+                        'type'  => $this->getType(), ]),
                 ];
-
             }
         }
 

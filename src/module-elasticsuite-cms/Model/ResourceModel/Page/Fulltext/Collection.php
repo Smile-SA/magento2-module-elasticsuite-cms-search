@@ -63,7 +63,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     private $facets = [];
 
     /**
-     * @var int
+     * @var integer
      */
     private $storeId;
 
@@ -72,8 +72,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      *
-     * @param \Magento\Framework\Data\Collection\EntityFactoryInterface   $entityFactory     Collection entity
-     *                                                                                        factory
+     * @param \Magento\Framework\Data\Collection\EntityFactoryInterface    $entityFactory     Collection entity factory
      * @param \Psr\Log\LoggerInterface                                     $logger            Logger.
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy     Db Fetch strategy.
      * @param \Magento\Framework\Event\ManagerInterface                    $eventManager      Event manager.
@@ -141,7 +140,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
 
     /**
      * Returns current store id.
-     * 
+     *
      * @return int
      */
     public function getStoreId()
@@ -152,8 +151,8 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     /**
      * Add filter by store
      *
-     * @param int|array|\Magento\Store\Model\Store $store Store
-     * @param bool $withAdmin
+     * @param int|array|\Magento\Store\Model\Store $store     Store
+     * @param bool                                 $withAdmin With admin
      *
      * @return $this
      */

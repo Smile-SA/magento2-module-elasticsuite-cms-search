@@ -22,6 +22,6 @@
             <li><?php echo $currentPage->getTitle(); ?></li>
        <?php endforeach; ?>
        </ul>
-       <a href=""><?php echo __('Show more.')?></a>
+       <a href="<?php echo $block->getShowAllUrl()?>"><?php echo __('Show more.')?></a>
    </div>
 <?php endif; ?>

@@ -19,7 +19,6 @@ use \Magento\Framework\Setup\ModuleContextInterface;
 use \Magento\Framework\Setup\SchemaSetupInterface;
 use \Magento\Eav\Setup\EavSetup;
 
-
 /**
  * Install Schema for Training Seller
  *
