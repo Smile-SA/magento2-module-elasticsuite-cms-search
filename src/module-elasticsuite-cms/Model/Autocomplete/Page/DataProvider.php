@@ -117,6 +117,7 @@ class DataProvider implements DataProviderInterface
      */
     public function getItems()
     {
+        $result = [];
         $pageCollection = $this->getCmsPageCollection();
         if ($pageCollection) {
             foreach ($pageCollection as $page) {
