@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
- * Smile_ElasticSuiteCms Mview Configuration.
+ * Smile_ElasticsuiteCms Mview Configuration.
  *
  * DISCLAIMER
  *
@@ -10,7 +10,7 @@
  *
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
@@ -18,6 +18,6 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
 
-    <view id="elasticsuite_cms_page_fulltext" class="Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext" group="indexer" />
+    <view id="elasticsuite_cms_page_fulltext" class="Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext" group="indexer" />
 
 </config>

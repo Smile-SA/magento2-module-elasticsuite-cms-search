@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
- * Smile_ElasticSuiteCore module loading configuration.
+ * Smile_ElasticsuiteCore module loading configuration.
  *
  * DISCLAIMER
  *
@@ -10,15 +10,15 @@
  *
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
-    <indexer id="elasticsuite_cms_page_fulltext" view_id="elasticsuite_cms_page_fulltext" class="Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext">
-        <title translate="true">ElasticSuite Cms Page Indexing</title>
-        <description translate="true">Reindex ElasticSuite cms pages.</description>
+    <indexer id="elasticsuite_cms_page_fulltext" view_id="elasticsuite_cms_page_fulltext" class="Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext">
+        <title translate="true">Elasticsuite Cms Page Indexing</title>
+        <description translate="true">Reindex Elasticsuite cms pages.</description>
     </indexer>
 </config>

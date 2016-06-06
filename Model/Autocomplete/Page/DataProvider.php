@@ -6,26 +6,26 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Model\Autocomplete\Page;
+namespace Smile\ElasticsuiteCms\Model\Autocomplete\Page;
 
 use Magento\Search\Model\Autocomplete\DataProviderInterface;
 use Magento\Search\Model\QueryFactory;
 use Magento\Search\Model\Autocomplete\ItemFactory;
 use Magento\Store\Model\StoreManagerInterface;
-use Smile\ElasticSuiteCore\Helper\Autocomplete as ConfigurationHelper;
-use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as CmsCollectionFactory;
-use Smile\ElasticSuiteCore\Model\Autocomplete\Terms\DataProvider as TermDataProvider;
+use Smile\ElasticsuiteCore\Helper\Autocomplete as ConfigurationHelper;
+use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as CmsCollectionFactory;
+use Smile\ElasticsuiteCore\Model\Autocomplete\Terms\DataProvider as TermDataProvider;
 
 /**
  * Catalog product autocomplete data provider.
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile\ElasticsuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class DataProvider implements DataProviderInterface
@@ -153,7 +153,7 @@ class DataProvider implements DataProviderInterface
      * Suggested pages collection.
      * Returns null if no suggested search terms.
      *
-     * @return \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\Collection|null
+     * @return \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\Collection|null
      */
     private function getCmsPageCollection()
     {

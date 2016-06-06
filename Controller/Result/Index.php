@@ -5,12 +5,12 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Controller\Result;
+namespace Smile\ElasticsuiteCms\Controller\Result;
 
 /**
  * Cms page results.
@@ -18,7 +18,7 @@ namespace Smile\ElasticSuiteCms\Controller\Result;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile\ElasticsuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class Index extends \Magento\Framework\App\Action\Action

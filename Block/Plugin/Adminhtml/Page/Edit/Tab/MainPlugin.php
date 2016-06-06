@@ -5,12 +5,12 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Block\Plugin\Adminhtml\Page\Edit\Tab;
+namespace Smile\ElasticsuiteCms\Block\Plugin\Adminhtml\Page\Edit\Tab;
 
 use Magento\Cms\Block\Adminhtml\Page\Edit\Tab\Main;
 use Magento\Framework\Data\Form;
@@ -23,7 +23,7 @@ use Magento\Framework\Registry;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile\ElasticsuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class MainPlugin

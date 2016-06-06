@@ -7,7 +7,7 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
@@ -18,7 +18,7 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
         <route id="smile_elasticsuite_cms" frontName="elasticsuite_cms">
-            <module name="Smile_ElasticSuiteCms" />
+            <module name="Smile_ElasticsuiteCms" />
         </route>
     </router>
 </config>

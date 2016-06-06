@@ -6,15 +6,15 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext;
+namespace Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext;
 
-use Smile\ElasticSuiteCore\Search\RequestInterface;
-use Smile\ElasticSuiteCore\Search\Request\BucketInterface;
+use Smile\ElasticsuiteCore\Search\RequestInterface;
+use Smile\ElasticsuiteCore\Search\Request\BucketInterface;
 
 /**
  * Search engine product collection.
@@ -22,7 +22,7 @@ use Smile\ElasticSuiteCore\Search\Request\BucketInterface;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  */
 class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
@@ -33,7 +33,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     private $queryResponse;
 
     /**
-     * @var \Smile\ElasticSuiteCore\Search\Request\Builder
+     * @var \Smile\ElasticsuiteCore\Search\Request\Builder
      */
     private $requestBuilder;
 
@@ -77,7 +77,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy     Db Fetch strategy.
      * @param \Magento\Framework\Event\ManagerInterface                    $eventManager      Event manager.
      * @param \Magento\Store\Model\StoreManagerInterface                   $storeManager      Store manager.
-     * @param \Smile\ElasticSuiteCore\Search\Request\Builder               $requestBuilder    Search request
+     * @param \Smile\ElasticsuiteCore\Search\Request\Builder               $requestBuilder    Search request
      *                                                                                        builder.
      * @param \Magento\Search\Model\SearchEngine                           $searchEngine      Search engine
      * @param string                                                       $searchRequestName Search request
@@ -91,7 +91,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
         \Magento\Framework\Event\ManagerInterface $eventManager,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Smile\ElasticSuiteCore\Search\Request\Builder $requestBuilder,
+        \Smile\ElasticsuiteCore\Search\Request\Builder $requestBuilder,
         \Magento\Search\Model\SearchEngine $searchEngine,
         $searchRequestName = 'cms_search_container',
         \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
@@ -174,7 +174,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
      *
      * @param string $query Search query text.
      *
-     * @return \Smile\ElasticSuiteCatalog\Model\ResourceModel\Product\Fulltext\Collection
+     * @return \Smile\ElasticsuiteCatalog\Model\ResourceModel\Product\Fulltext\Collection
      */
     public function addSearchFilter($query)
     {

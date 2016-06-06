@@ -6,28 +6,28 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Smile\ElasticSuiteCms\Helper;
+namespace Smile\ElasticsuiteCms\Helper;
 
-use Smile\ElasticSuiteCore\Helper\AbstractConfiguration;
+use Smile\ElasticsuiteCore\Helper\AbstractConfiguration;
 use Magento\Store\Model\StoreManagerInterface;
 
 /**
- * Smile_ElasticSuiteCore search engine configuration default implementation.
+ * Smile_ElasticsuiteCore search engine configuration default implementation.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  */
 class Configuration extends AbstractConfiguration
 {
     /**
-     * Location of ElasticSuite cms page settings configuration.
+     * Location of Elasticsuite cms page settings configuration.
      *
      * @var string
      */

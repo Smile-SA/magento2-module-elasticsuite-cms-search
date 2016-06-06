@@ -5,16 +5,16 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Block\Page;
+namespace Smile\ElasticsuiteCms\Block\Page;
 
 use Magento\Framework\View\Element\Template\Context as TemplateContext;
 use Magento\Search\Model\QueryFactory;
-use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as PageCollectionFactory;
+use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as PageCollectionFactory;
 
 /**
  * Plugin that happend custom fields dedicated to search configuration
@@ -22,7 +22,7 @@ use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile\ElasticsuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class Result extends \Magento\Framework\View\Element\Template
@@ -33,7 +33,7 @@ class Result extends \Magento\Framework\View\Element\Template
     private $queryFactory;
 
     /**
-     * @var \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\Collection
+     * @var \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\Collection
      */
     private $pageCollection;
 
@@ -60,7 +60,7 @@ class Result extends \Magento\Framework\View\Element\Template
     /**
      * Returns cms page collection.
      *
-     * @return \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Fulltext\Collection
+     * @return \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\Collection
      */
     public function getPageCollection()
     {

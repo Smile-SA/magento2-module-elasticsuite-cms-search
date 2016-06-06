@@ -7,7 +7,7 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK  <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
@@ -17,16 +17,16 @@
     <type name="Magento\Search\Model\Autocomplete">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="30" xsi:type="object">Smile\ElasticSuiteCms\Model\Autocomplete\Page\DataProvider</item>
+                <item name="30" xsi:type="object">Smile\ElasticsuiteCms\Model\Autocomplete\Page\DataProvider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Smile\ElasticSuiteCore\Block\Search\Form\Autocomplete">
+    <type name="Smile\ElasticsuiteCore\Block\Search\Form\Autocomplete">
         <arguments>
             <argument name="rendererList" xsi:type="array">
                 <item name="cms_page" xsi:type="array">
                     <item name="title" xsi:type="string">Cms page</item>
-                    <item name="template" xsi:type="string">Smile_ElasticSuiteCms/autocomplete/cms</item>
+                    <item name="template" xsi:type="string">Smile_ElasticsuiteCms/autocomplete/cms</item>
                 </item>
             </argument>
         </arguments>

@@ -5,21 +5,21 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
 
-namespace Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action;
+namespace Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action;
 
-use Smile\ElasticSuiteCore\Model\ResourceModel\Indexer\AbstractIndexer;
+use Smile\ElasticsuiteCore\Model\ResourceModel\Indexer\AbstractIndexer;
 
 /**
  * ElasticSearch category full indexer resource model.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  */
 class Full extends AbstractIndexer
@@ -60,7 +60,7 @@ class Full extends AbstractIndexer
      * @param \Zend_Db_Select $select  Product select to be filtered.
      * @param integer         $storeId Store Id
      *
-     * @return \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full Self Reference
+     * @return \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full Self Reference
      */
     private function addIsVisibleInStoreFilter($select, $storeId)
     {

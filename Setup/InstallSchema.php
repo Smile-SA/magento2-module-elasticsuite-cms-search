@@ -1,6 +1,6 @@
 <?php
 /**
- * Smile_ElasticSuiteCms install schema
+ * Smile_ElasticsuiteCms install schema
  *
  * DISCLAIMER
  *
@@ -8,7 +8,7 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  */

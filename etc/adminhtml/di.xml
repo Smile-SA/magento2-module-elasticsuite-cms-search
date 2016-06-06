@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Smile_ElasticSuiteCms adminhtml dependency injection configuration.
+ * Smile_ElasticsuiteCms adminhtml dependency injection configuration.
  *
  * DISCLAIMER
  *
@@ -9,7 +9,7 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
@@ -18,7 +18,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <type name="\Magento\Cms\Block\Adminhtml\Page\Edit\Tab\Main">
-        <plugin name="search_page" type="\Smile\ElasticSuiteCms\Block\Plugin\Adminhtml\Page\Edit\Tab\MainPlugin" />
+        <plugin name="search_page" type="\Smile\ElasticsuiteCms\Block\Plugin\Adminhtml\Page\Edit\Tab\MainPlugin" />
     </type>
 
 </config>

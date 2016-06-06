@@ -6,7 +6,7 @@
         {"name": "Fanny DECLERCK", "email": "fadec@smile.fr"},
         {"name": "Aurélien FOUCRET", "email": "aurelien.foucret@smile.fr"}
     ],
-    "description": "Smile ElasticSuite - Cms Pages Search Module for Smile ElasticSuite.",
+    "description": "Smile Elasticsuite - Cms Pages Search Module for Smile Elasticsuite.",
     "homepage": "https://github.com/Smile-SA/module-elasticsuite-cms-search",
     "keywords": [
         "magento",
@@ -33,7 +33,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Smile\\ElasticSuiteCms\\": ""
+            "Smile\\ElasticsuiteCms\\": ""
         }
     }
 }

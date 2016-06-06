@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Smile_ElasticSuiteCms dependency injection configuration.
+ * Smile_ElasticsuiteCms dependency injection configuration.
  *
  * DISCLAIMER
  *
@@ -9,7 +9,7 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
@@ -17,20 +17,20 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <virtualType name="cmsPageSearchIndexHandler" type="\Smile\ElasticSuiteCore\Indexer\GenericIndexerHandler">
+    <virtualType name="cmsPageSearchIndexHandler" type="\Smile\ElasticsuiteCore\Indexer\GenericIndexerHandler">
         <arguments>
             <argument name="indexName" xsi:type="string">cms_page</argument>
             <argument name="typeName" xsi:type="string">page</argument>
         </arguments>
     </virtualType>
 
-    <type name="Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext">
+    <type name="Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext">
         <arguments>
             <argument name="indexerHandler" xsi:type="object">cmsPageSearchIndexHandler</argument>
         </arguments>
     </type>
 
     <type name="\Magento\Cms\Model\Page">
-        <plugin name="smile_elasticsuite_cms_reindex_page_after_cms_page_save" type="\Smile\ElasticSuiteCms\Plugin\Indexer\Page\Save\ReindexPageAfterSave" />
+        <plugin name="smile_elasticsuite_cms_reindex_page_after_cms_page_save" type="\Smile\ElasticsuiteCms\Plugin\Indexer\Page\Save\ReindexPageAfterSave" />
     </type>
 </config>

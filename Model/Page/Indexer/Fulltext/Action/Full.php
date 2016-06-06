@@ -5,27 +5,27 @@
  * versions in the future.
  *
  * @category  Smile
- * @package   Smile_ElasticSuiteCms
+ * @package   Smile\ElasticsuiteCms
  * @author    Fanny DECLERCK <fadec@smile.fr>
  * @copyright 2016 Smile
  * @license   Open Software License ("OSL") v. 3.0
  */
-namespace Smile\ElasticSuiteCms\Model\Page\Indexer\Fulltext\Action;
+namespace Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext\Action;
 
-use Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full as ResourceModel;
+use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full as ResourceModel;
 use Magento\Cms\Model\Template\FilterProvider;
 
 /**
  * ElasticSearch categories full indexer
  *
  * @category Smile
- * @package  Smile_ElasticSuiteCms
+ * @package  Smile\ElasticsuiteCms
  * @author   Fanny DECLERCK <fadec@smile.fr>
  */
 class Full
 {
     /**
-     * @var \Smile\ElasticSuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full
+     * @var \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full
      */
     private $resourceModel;
 
