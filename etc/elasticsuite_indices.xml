@@ -19,7 +19,7 @@
 <indices xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Smile_ElasticsuiteCore:etc/elasticsuite_indices.xsd">
     <index identifier="cms_page" defaultSearchType="page">
-        <type name="page">
+        <type name="page" idFieldName="page_id">
             <mapping>
                 <!-- Static fields handled by the base indexer (not datasource) -->
                 <field name="page_id" type="integer" />
