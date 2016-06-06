@@ -1,38 +1,39 @@
 {
-    "name" : "smile-sa/module-elasticsuite-cms",
-    "type" : "magento2-module",
-    "license" : "OSL-3.0",
-    "authors" : [{
-            "name" : "Fanny DECLERCK",
-            "email" : "fadec@smile.fr"
-        }
+    "name": "smile/module-elasticsuite-cms-search",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {"name": "Fanny DECLERCK", "email": "fadec@smile.fr"},
+        {"name": "Aurélien FOUCRET", "email": "aurelien.foucret@smile.fr"}
     ],
-    "description" : "Smile ElasticSuite - Cms search module.",
-    "homepage" : "https://github.com/Smile-SA/module-elasticsuite-catalog",
-    "keywords" : [
+    "description": "Smile ElasticSuite - Cms Pages Search Module for Smile ElasticSuite.",
+    "homepage": "https://github.com/Smile-SA/module-elasticsuite-cms-search",
+    "keywords": [
         "magento",
         "magento2",
         "elasticsearch",
+        "cms",
         "search",
         "merchandising",
         "core",
         "setup"
     ],
-    "require" : {
-        "magento/framework" : "*",
-        "magento/module-store" : "*",
-        "magento/module-backend" : "*",
-        "magento/module-catalog" : "*",
-        "magento/module-catalog-search" : "*",
-        "magento/magento-composer-installer" : "*",
-        "elasticsearch/elasticsearch" : "2.1.*"
+    "require": {
+        "php": "~5.5.0|~5.6.0|~7.0.0",
+        "magento/framework": "*",
+        "magento/module-store": "*",
+        "magento/module-backend": "*",
+        "magento/module-catalog": "*",
+        "magento/module-catalog-search": "*",
+        "magento/magento-composer-installer": "*",
+        "smile/elasticsuite": ">=2.1"
     },
-    "autoload" : {
-        "files" : [
-            "src/module-elasticsuite-cms/registration.php"
+    "autoload": {
+        "files": [
+            "registration.php"
         ],
-        "psr-4" : {
-            "Smile\\ElasticSuiteCms\\" : "src/module-elasticsuite-cms"
+        "psr-4": {
+            "Smile\\ElasticSuiteCms\\": ""
         }
     }
 }
