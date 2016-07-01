@@ -77,6 +77,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy     Db Fetch strategy.
      * @param \Magento\Framework\Event\ManagerInterface                    $eventManager      Event manager.
      * @param \Magento\Store\Model\StoreManagerInterface                   $storeManager      Store manager.
+     * @apram \Magento\Framework\EntityManager\MetadataPool                $metadataPool      Metadata pool.
      * @param \Smile\ElasticsuiteCore\Search\Request\Builder               $requestBuilder    Search request
      *                                                                                        builder.
      * @param \Magento\Search\Model\SearchEngine                           $searchEngine      Search engine
@@ -91,13 +92,15 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
         \Magento\Framework\Event\ManagerInterface $eventManager,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
+        \Magento\Framework\EntityManager\MetadataPool $metadataPool,
         \Smile\ElasticsuiteCore\Search\Request\Builder $requestBuilder,
         \Magento\Search\Model\SearchEngine $searchEngine,
         $searchRequestName = 'cms_search_container',
         \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
     ) {
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $storeManager, $connection, $resource);
+
+        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $storeManager, $metadataPool, $connection, $resource);
 
         $this->requestBuilder    = $requestBuilder;
         $this->searchEngine      = $searchEngine;
