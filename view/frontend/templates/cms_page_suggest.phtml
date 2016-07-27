@@ -19,7 +19,7 @@
 
        <ul>
        <?php foreach ($block->getPageCollection() as $currentPage) : ?>
-            <li><?php echo $currentPage->getTitle(); ?></li>
+            <li><a href="<?php echo $block->getPageUrl($currentPage->getId())?>"><?php echo $currentPage->getTitle(); ?></a></li>
        <?php endforeach; ?>
        </ul>
        <a href="<?php echo $block->getShowAllUrl()?>"><?php echo __('Show more.')?></a>
