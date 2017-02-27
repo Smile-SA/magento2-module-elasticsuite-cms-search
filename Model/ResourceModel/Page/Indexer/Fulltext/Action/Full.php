@@ -66,7 +66,7 @@ class Full extends AbstractIndexer
     {
         $select->join(
             ['ps' => $this->getTable('cms_page_store')],
-            'p.page_id = ps.page_id'
+            'p.page_id = ps.row_id'
         );
         $select->where('ps.store_id IN (?)', array(0, $storeId));
 
