@@ -13,6 +13,10 @@
 
 namespace Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action;
 
+use Magento\Framework\App\ProductMetadataInterface;
+use Magento\Framework\App\ResourceConnection;
+use Magento\Store\Model\StoreManagerInterface;
+
 use Smile\ElasticsuiteCore\Model\ResourceModel\Indexer\AbstractIndexer;
 
 /**
@@ -24,6 +28,25 @@ use Smile\ElasticsuiteCore\Model\ResourceModel\Indexer\AbstractIndexer;
  */
 class Full extends AbstractIndexer
 {
+
+    /**
+     * @var ProductMetadataInterface
+     */
+    protected $productMetadata;
+
+    /**
+     * Constructor
+     * 
+     * @param ResourceConnection       $resource        Database adpater.
+     * @param StoreManagerInterface    $storeManager    Store manager.
+     * @param ProductMetadataInterface $productMetadata Product metadata.
+     */
+    public function __construct(ResourceConnection $resource, StoreManagerInterface $storeManager, ProductMetadataInterface $productMetadata)
+    {
+        $this->productMetadata = $productMetadata;
+        parent::__construct($resource, $storeManager);
+    }
+
     /**
      * Load a bulk of cms page data.
      *
