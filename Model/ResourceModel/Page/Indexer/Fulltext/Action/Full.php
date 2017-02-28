@@ -87,9 +87,15 @@ class Full extends AbstractIndexer
      */
     private function addIsVisibleInStoreFilter($select, $storeId)
     {
+        if ($this->productMetadata->getEdition() == "Enterprise") {
+            $joinColumn = 'row_id';
+        } else {
+            $joinColumn = 'page_id';
+        }
+
         $select->join(
             ['ps' => $this->getTable('cms_page_store')],
-            'p.page_id = ps.page_id'
+            'p.page_id = ps.' . $joinColumn
         );
         $select->where('ps.store_id IN (?)', array(0, $storeId));
 
