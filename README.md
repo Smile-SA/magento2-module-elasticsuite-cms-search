@@ -11,7 +11,7 @@ It allows to index CMS Pages into the search engine and display them into the au
 Magento Version         | ElasticSuite Latest Version
 ------------------------|------------------------------------------------------------------------
 Magento 2.0.* CE / EE   |[2.1.0 release](https://github.com/Smile-SA/module-elasticsuite-cms-search/releases/tag/2.1.0)
-Magento 2.1.* CE / EE   |[2.1.0 release](https://github.com/Smile-SA/module-elasticsuite-cms-search/releases/tag/2.0.0)
+Magento 2.1.* CE / EE   |[2.0.0 release](https://github.com/Smile-SA/module-elasticsuite-cms-search/releases/tag/2.0.0)
 
 ### Requirements
 
