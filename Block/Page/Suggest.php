@@ -152,6 +152,18 @@ class Suggest extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Returns page url.
+     *
+     * @param int $pageId Page id
+     *
+     * @return mixed
+     */
+    public function getPageUrl($pageId)
+    {
+        return $this->cmsPage->getPageUrl($pageId);
+    }
+
+    /**
      * Init cms page collection.
      *
      * @param PageCollectionFactory $collectionFactory Cms page collection.
@@ -168,18 +180,5 @@ class Suggest extends \Magento\Framework\View\Element\Template
         $pageCollection->addSearchFilter($queryText);
 
         return $pageCollection;
-    }
-
-
-    /**
-     * Returns page url.
-     *
-     * @param int $pageId Page id
-     *
-     * @return mixed
-     */
-    public function getPageUrl($pageId)
-    {
-        return $this->cmsPage->getPageUrl($pageId);
     }
 }

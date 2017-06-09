@@ -113,7 +113,6 @@ class Fulltext implements ActionInterface, MviewActionInterface
             $saveHandler->cleanIndex([$dimension]);
             $saveHandler->saveIndex([$dimension], $this->fullAction->rebuildStoreIndex($storeId));
         }
-
     }
 
     /**

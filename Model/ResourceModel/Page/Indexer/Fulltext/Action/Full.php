@@ -76,7 +76,6 @@ class Full extends AbstractIndexer
                ->order('p.page_id');
 
         return $this->connection->fetchAll($select);
-
     }
 
     /**

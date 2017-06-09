@@ -77,7 +77,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy     Db Fetch strategy.
      * @param \Magento\Framework\Event\ManagerInterface                    $eventManager      Event manager.
      * @param \Magento\Store\Model\StoreManagerInterface                   $storeManager      Store manager.
-     * @apram \Magento\Framework\EntityManager\MetadataPool                $metadataPool      Metadata pool.
+     * @param \Magento\Framework\EntityManager\MetadataPool                $metadataPool      Metadata pool.
      * @param \Smile\ElasticsuiteCore\Search\Request\Builder               $requestBuilder    Search request
      *                                                                                        builder.
      * @param \Magento\Search\Model\SearchEngine                           $searchEngine      Search engine
@@ -153,6 +153,9 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
 
     /**
      * Add filter by store
+     *
+     * @SuppressWarnings(PHPMD.BooleanArgumentFlag) Method is inherited
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter) Method is inherited
      *
      * @param int|array|\Magento\Store\Model\Store $store     Store
      * @param bool                                 $withAdmin With admin
