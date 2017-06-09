@@ -51,19 +51,26 @@ class Suggest extends \Magento\Framework\View\Element\Template
     private $pageCollection;
 
     /**
+     * @var \Magento\Cms\Helper\Page
+     */
+    protected $cmsPage;
+
+    /**
      * Suggest constructor.
      *
-     * @param TemplateContext       $context               Template contexte.
-     * @param QueryFactory          $queryFactory          Query factory.
-     * @param PageCollectionFactory $pageCollectionFactory Page collection factory.
-     * @param Configuration         $helper                Configuration helper.
-     * @param array                 $data                  Data.
+     * @param TemplateContext          $context               Template contexte.
+     * @param QueryFactory             $queryFactory          Query factory.
+     * @param PageCollectionFactory    $pageCollectionFactory Page collection factory.
+     * @param Configuration            $helper                Configuration helper.
+     * @param \Magento\Cms\Helper\Page $cmsPage               Cms helper page.
+     * @param array                    $data                  Data.
      */
     public function __construct(
         TemplateContext $context,
         QueryFactory $queryFactory,
         PageCollectionFactory $pageCollectionFactory,
         Configuration $helper,
+        \Magento\Cms\Helper\Page $cmsPage,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -71,6 +78,7 @@ class Suggest extends \Magento\Framework\View\Element\Template
         $this->queryFactory   = $queryFactory;
         $this->helper         = $helper;
         $this->pageCollection = $this->initPageCollection($pageCollectionFactory);
+        $this->cmsPage        = $cmsPage;
     }
 
     /**
@@ -160,5 +168,18 @@ class Suggest extends \Magento\Framework\View\Element\Template
         $pageCollection->addSearchFilter($queryText);
 
         return $pageCollection;
+    }
+
+
+    /**
+     * Returns page url.
+     *
+     * @param int $pageId Page id
+     *
+     * @return mixed
+     */
+    public function getPageUrl($pageId)
+    {
+        return $this->cmsPage->getPageUrl($pageId);
     }
 }
