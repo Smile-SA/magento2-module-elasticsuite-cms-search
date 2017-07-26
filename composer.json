@@ -4,7 +4,8 @@
     "license": "OSL-3.0",
     "authors": [
         {"name": "Fanny DECLERCK", "email": "fadec@smile.fr"},
-        {"name": "Aurélien FOUCRET", "email": "aurelien.foucret@smile.fr"}
+        {"name": "Aurélien FOUCRET", "email": "aurelien.foucret@smile.fr"},
+        {"name": "Romain RUAUD", "email": "romain.ruaud@smile.fr"}
     ],
     "description": "Smile Elasticsuite - Cms Pages Search Module for Smile Elasticsuite.",
     "homepage": "https://github.com/Smile-SA/module-elasticsuite-cms-search",
@@ -32,7 +33,7 @@
         "magento/module-catalog": ">=100.1.0",
         "magento/module-catalog-search": ">=100.1.0",
         "magento/magento-composer-installer": "*",
-        "smile/elasticsuite": ">=2.1"
+        "smile/elasticsuite": "^2.3.6"
     },
     "require-dev": {
         "smile/magento2-smilelab-quality-suite": "1.0.0"
