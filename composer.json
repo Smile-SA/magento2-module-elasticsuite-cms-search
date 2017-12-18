@@ -35,7 +35,7 @@
         "smile/elasticsuite": "^2.4.0"
     },
     "require-dev": {
-        "smile/magento2-smilelab-quality-suite": "1.0.0"
+        "smile/magento2-smilelab-quality-suite": "^1.0.4"
     },
     "autoload": {
         "files": [
