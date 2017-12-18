@@ -121,11 +121,10 @@ class DataProvider implements DataProviderInterface
         $pageCollection = $this->getCmsPageCollection();
         if ($pageCollection) {
             foreach ($pageCollection as $page) {
-                array_push($result, $this->itemFactory->create([
+                $result[] = $result, $this->itemFactory->create([
                     'title' => $page->getTitle(),
                     'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                    'type'  => $this->getType(),])
-                );
+                    'type'  => $this->getType(),]);
 	    }
         }
 
