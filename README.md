@@ -8,10 +8,11 @@ It allows to index CMS Pages into the search engine and display them into the au
 
 **Which version should I use ?**
 
-Magento Version         | ElasticSuite Latest Version
-------------------------|------------------------------------------------------------------------
-Magento 2.0.* CE / EE   |[2.1.0 release](https://github.com/Smile-SA/module-elasticsuite-cms-search/releases/tag/2.1.0)
-Magento 2.1.* CE / EE   |[2.0.0 release](https://github.com/Smile-SA/module-elasticsuite-cms-search/releases/tag/2.0.0)
+Magento Version                                     | Module Version
+----------------------------------------------------|------------------------------------------------------------------------
+Magento **2.0.x** Opensource (CE) / Commerce (EE)   |**2.0.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.0.0```
+Magento **2.1.x** Opensource (CE) / Commerce (EE)   |**2.1.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.1.0```
+Magento **2.2.x** Opensource (CE) / Commerce (EE)   |**2.1.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.1.0```
 
 ### Requirements
 
