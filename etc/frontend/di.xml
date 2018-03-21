@@ -17,7 +17,7 @@
     <type name="Magento\Search\Model\Autocomplete">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="30" xsi:type="object">Smile\ElasticsuiteCms\Model\Autocomplete\Page\DataProvider</item>
+                <item name="50" xsi:type="object">Smile\ElasticsuiteCms\Model\Autocomplete\Page\DataProvider</item>
             </argument>
         </arguments>
     </type>
