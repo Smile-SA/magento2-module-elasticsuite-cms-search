@@ -30,7 +30,7 @@
         </arguments>
     </type>
 
-    <type name="\Magento\Cms\Model\Page">
+    <type name="Magento\Cms\Model\ResourceModel\Page">
         <plugin name="smile_elasticsuite_cms_reindex_page_after_cms_page_save" type="\Smile\ElasticsuiteCms\Plugin\Indexer\Page\Save\ReindexPageAfterSave" />
     </type>
 </config>

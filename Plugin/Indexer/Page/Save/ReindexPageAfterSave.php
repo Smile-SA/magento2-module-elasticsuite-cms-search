@@ -14,7 +14,6 @@ namespace Smile\ElasticsuiteCms\Plugin\Indexer\Page\Save;
 
 use Magento\Framework\Indexer\IndexerRegistry;
 use Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext;
-use Magento\Cms\Model\Page;
 
 /**
  * Plugin that proceed cms page reindex in ES after cms page save
@@ -41,20 +40,26 @@ class ReindexPageAfterSave
     }
 
     /**
-     * Reindex cms page's data into search engine after saving the cms page
+     * Reindex cms page's data into search engine after saving the cms page.
      *
-     * @param Page $subject The cms page being reindexed
-     * @param Page $result  The parent function we are plugged on
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     *
+     * @param \Magento\Cms\Model\ResourceModel\Page                $subject The resource model.
+     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $result  Result of save() method.
+     * @param \Magento\Framework\Model\AbstractModel               $page    The CMS page being reindexed.
      *
      * @return \Magento\Cms\Model\Page
      */
     public function afterSave(
-        Page $subject,
-        $result
+        \Magento\Cms\Model\ResourceModel\Page $subject,
+        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $result,
+        \Magento\Framework\Model\AbstractModel $page
     ) {
-        if ($subject->getIsSearchable()) {
+        if ($page->getIsSearchable()) {
             $cmsPageIndexer = $this->indexerRegistry->get(Fulltext::INDEXER_ID);
-            $cmsPageIndexer->reindexRow($subject->getId());
+            if (!$cmsPageIndexer->isScheduled()) {
+                $cmsPageIndexer->reindexRow($page->getId());
+            }
         }
 
         return $result;
