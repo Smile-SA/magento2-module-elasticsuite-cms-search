@@ -19,11 +19,23 @@
     <columns name="cms_page_columns">
         <column name="is_searchable">
             <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="array">
+                    <item name="yes" xsi:type="array">
+                        <item name="value" xsi:type="string">1</item>
+                        <item name="label" xsi:type="string" translate="true">Yes</item>
+                    </item>
+                    <item name="no" xsi:type="array">
+                        <item name="value" xsi:type="string">0</item>
+                        <item name="label" xsi:type="string" translate="true">No</item>
+                    </item>
+                </item>
                 <item name="config" xsi:type="array">
-                    <item name="filter" xsi:type="string">text</item>
-                    <item name="editor" xsi:type="string">text</item>
+                    <item name="filter" xsi:type="string">select</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
+                    <item name="dataType" xsi:type="string">select</item>
                     <item name="label" xsi:type="string" translate="true">Is searchable</item>
                     <item name="visible" xsi:type="boolean">false</item>
+                    <item name="editor" xsi:type="string">select</item>
                 </item>
             </argument>
         </column>
