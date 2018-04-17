@@ -33,11 +33,8 @@ class Fulltext implements ActionInterface, MviewActionInterface
      */
     const INDEXER_ID = 'elasticsuite_cms_page_fulltext';
 
-    /** @var array index structure */
-    protected $data;
-
     /**
-     * @var IndexerHandler
+     * @var IndexerInterface
      */
     private $indexerHandler;
 
@@ -61,20 +58,17 @@ class Fulltext implements ActionInterface, MviewActionInterface
      * @param IndexerInterface      $indexerHandler   The index handler
      * @param StoreManagerInterface $storeManager     The Store Manager
      * @param DimensionFactory      $dimensionFactory The dimension factory
-     * @param array                 $data             The data
      */
     public function __construct(
         Full $fullAction,
         IndexerInterface $indexerHandler,
         StoreManagerInterface $storeManager,
-        DimensionFactory $dimensionFactory,
-        array $data
+        DimensionFactory $dimensionFactory
     ) {
         $this->fullAction = $fullAction;
         $this->indexerHandler = $indexerHandler;
         $this->storeManager = $storeManager;
         $this->dimensionFactory = $dimensionFactory;
-        $this->data = $data;
     }
 
     /**
@@ -87,12 +81,11 @@ class Fulltext implements ActionInterface, MviewActionInterface
     public function execute($ids)
     {
         $storeIds = array_keys($this->storeManager->getStores());
-        /** @var IndexerHandler $saveHandler */
-        $saveHandler = $this->indexerHandler;
+
         foreach ($storeIds as $storeId) {
             $dimension = $this->dimensionFactory->create(['name' => 'scope', 'value' => $storeId]);
-            $saveHandler->deleteIndex([$dimension], new \ArrayObject($ids));
-            $saveHandler->saveIndex([$dimension], $this->fullAction->rebuildStoreIndex($storeId, $ids));
+            $this->indexerHandler->deleteIndex([$dimension], new \ArrayObject($ids));
+            $this->indexerHandler->saveIndex([$dimension], $this->fullAction->rebuildStoreIndex($storeId, $ids));
         }
     }
 
@@ -105,29 +98,26 @@ class Fulltext implements ActionInterface, MviewActionInterface
     {
         $storeIds = array_keys($this->storeManager->getStores());
 
-        /** @var IndexerHandler $saveHandler */
-        $saveHandler = $this->indexerHandler;
-
         foreach ($storeIds as $storeId) {
             $dimension = $this->dimensionFactory->create(['name' => 'scope', 'value' => $storeId]);
-            $saveHandler->cleanIndex([$dimension]);
-            $saveHandler->saveIndex([$dimension], $this->fullAction->rebuildStoreIndex($storeId));
+            $this->indexerHandler->cleanIndex([$dimension]);
+            $this->indexerHandler->saveIndex([$dimension], $this->fullAction->rebuildStoreIndex($storeId));
         }
     }
 
     /**
      * {@inheritDoc}
      */
-    public function executeList(array $categoryIds)
+    public function executeList(array $pageIds)
     {
-        $this->execute($categoryIds);
+        $this->execute($pageIds);
     }
 
     /**
      * {@inheritDoc}
      */
-    public function executeRow($categoryId)
+    public function executeRow($pageId)
     {
-        $this->execute([$categoryId]);
+        $this->execute([$pageId]);
     }
 }

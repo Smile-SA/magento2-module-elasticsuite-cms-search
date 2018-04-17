@@ -18,6 +18,10 @@
  -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
 
-    <view id="elasticsuite_cms_page_fulltext" class="Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext" group="indexer" />
+    <view id="elasticsuite_cms_page_fulltext" class="Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext" group="indexer">
+        <subscriptions>
+            <table name="cms_page" entity_column="page_id" />
+        </subscriptions>
+    </view>
 
 </config>
