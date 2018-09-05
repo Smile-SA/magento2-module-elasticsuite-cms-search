@@ -23,7 +23,6 @@
                    name="suggest.cms.page"
                    template="cms_page_suggest.phtml"
                    before = "search.result"
-                   cacheable="false"
             />
         </referenceContainer>
     </body>
