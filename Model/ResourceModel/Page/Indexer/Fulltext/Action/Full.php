@@ -71,6 +71,7 @@ class Full extends AbstractIndexer
         }
 
         $select->where('p.page_id > ?', $fromId)
+               ->where('p.is_active = ?', true)
                ->where('p.is_searchable = ?', true)
                ->limit($limit)
                ->order('p.page_id');
