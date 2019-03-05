@@ -123,7 +123,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     /**
      * {@inheritDoc}
      */
-    public function setOrder($attribute, $dir = Select::SQL_DESC)
+    public function setOrder($attribute, $dir = \Magento\Framework\DB\Select::SQL_DESC)
     {
         throw new \LogicException("Sorting on multiple stores is not allowed in search engine collections.");
     }
