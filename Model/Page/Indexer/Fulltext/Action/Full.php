@@ -12,11 +12,14 @@
  */
 namespace Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext\Action;
 
+use Magento\Framework\Filter\RemoveTags;
 use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full as ResourceModel;
 use Magento\Cms\Model\Template\FilterProvider;
+use Magento\Framework\App\Area;
+use Magento\Framework\App\AreaList;
 
 /**
- * ElasticSearch categories full indexer
+ * ElasticSearch CMS Pages full indexer
  *
  * @category Smile
  * @package  Smile\ElasticsuiteCms
@@ -35,15 +38,33 @@ class Full
     private $filterProvider;
 
     /**
+     * @var \Magento\Framework\App\AreaList
+     */
+    private $areaList;
+
+    /**
+     * @var \Magento\Framework\Filter\RemoveTags
+     */
+    private $stripTags;
+
+    /**
      * Constructor.
      *
      * @param ResourceModel  $resourceModel  Indexer resource model.
      * @param FilterProvider $filterProvider Model template filter provider.
+     * @param AreaList       $areaList       Area List
+     * @param RemoveTags     $stripTags      HTML Tags remover
      */
-    public function __construct(ResourceModel $resourceModel, FilterProvider $filterProvider)
-    {
+    public function __construct(
+        ResourceModel $resourceModel,
+        FilterProvider $filterProvider,
+        AreaList $areaList,
+        RemoveTags $stripTags
+    ) {
         $this->resourceModel  = $resourceModel;
         $this->filterProvider = $filterProvider;
+        $this->areaList       = $areaList;
+        $this->stripTags      = $stripTags;
     }
 
     /**
@@ -57,6 +78,8 @@ class Full
     public function rebuildStoreIndex($storeId, $cmsPageIds = null)
     {
         $lastCmsPageId = 0;
+
+        $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
 
         do {
             $cmsPages = $this->getSearchableCmsPage($storeId, $cmsPageIds, $lastCmsPageId);
@@ -93,7 +116,10 @@ class Full
     private function processPageData($pageData)
     {
         if (isset($pageData['content'])) {
-            $pageData['content'] = $this->filterProvider->getPageFilter()->filter($pageData['content']);
+            $content = html_entity_decode($this->filterProvider->getPageFilter()->filter($pageData['content']));
+            $content = $this->stripTags->filter($content);
+            $content = preg_replace('/\s\s+/', ' ', $content);
+            $pageData['content'] = $content;
         }
 
         return $pageData;
