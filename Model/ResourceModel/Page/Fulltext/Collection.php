@@ -15,6 +15,7 @@ namespace Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext;
 
 use Smile\ElasticsuiteCore\Search\RequestInterface;
 use Smile\ElasticsuiteCore\Search\Request\BucketInterface;
+use Magento\Framework\DB\Select;
 
 /**
  * Search engine product collection.
