@@ -66,6 +66,34 @@ class Result extends \Magento\Framework\View\Element\Template
     }
 
     /**
+     * Prepare layout
+     *
+     * @return $this
+     */
+    protected function _prepareLayout()
+    {
+        $title = $this->getSearchQueryText();
+        $this->pageConfig->getTitle()->set($title);
+        // add Home breadcrumb
+        $breadcrumbs = $this->getLayout()->getBlock('breadcrumbs');
+        if ($breadcrumbs) {
+            $breadcrumbs->addCrumb(
+                'home',
+                [
+                    'label' => __('Home'),
+                    'title' => __('Go to Home Page'),
+                    'link' => $this->_storeManager->getStore()->getBaseUrl()
+                ]
+            )->addCrumb(
+                'search',
+                ['label' => $title, 'title' => $title]
+            );
+        }
+
+        return parent::_prepareLayout();
+    }
+
+    /**
      * Returns cms page collection.
      *
      * @return \Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\Collection
@@ -115,6 +143,16 @@ class Result extends \Magento\Framework\View\Element\Template
     public function getPageUrl($pageId)
     {
         return $this->cmsPage->getPageUrl($pageId);
+    }
+
+    /**
+     * Get search query text
+     *
+     * @return \Magento\Framework\Phrase
+     */
+    public function getSearchQueryText()
+    {
+        return __("Search results for: '%1'", $this->escapeHtml($this->getQueryText()));
     }
 
     /**
