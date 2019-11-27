@@ -6,8 +6,8 @@
 <!-- Magento Version : Are you using Magento CE or EE ? Which version of Magento are you using exactly ? -->
 Magento Version :
 
-<!-- Module Map Version : Which exact version of Module Map are you using ? -->
-Module Store Locator Version :
+<!-- Module Elasticsuite Cms Search Version : Which exact version of Module Map are you using ? -->
+Module Elasticsuite Cms Search Version :
 
 <!-- Magento Environment : are you in Developer or Production mode ? -->
 Environment :
