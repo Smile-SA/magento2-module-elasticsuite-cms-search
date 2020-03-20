@@ -17,6 +17,7 @@ use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full 
 use Magento\Cms\Model\Template\FilterProvider;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\AreaList;
+use Magento\Store\Model\App\Emulation;
 
 /**
  * ElasticSearch CMS Pages full indexer
@@ -79,7 +80,12 @@ class Full
     {
         $lastCmsPageId = 0;
 
-        $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
+        try {
+            $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
+        } catch (\InvalidArgumentException | \LogicException $exception) {
+            // Can occur especially when magento sample data are triggering a full reindex.
+            ;
+        }
 
         do {
             $cmsPages = $this->getSearchableCmsPage($storeId, $cmsPageIds, $lastCmsPageId);
