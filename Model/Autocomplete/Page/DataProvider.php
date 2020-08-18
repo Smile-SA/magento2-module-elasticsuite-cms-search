@@ -177,17 +177,12 @@ class DataProvider implements DataProviderInterface
      */
     private function getCmsPageCollection()
     {
-        $pageCollection = null;
-        $suggestedTerms = $this->getSuggestedTerms();
-        $terms          = [$this->queryFactory->get()->getQueryText()];
-
-        if (!empty($suggestedTerms)) {
-            $terms = array_merge($terms, $suggestedTerms);
-        }
-
         $pageCollection = $this->cmsCollectionFactory->create();
-        $pageCollection->addSearchFilter($terms);
+        
         $pageCollection->setPageSize($this->getResultsPageSize());
+        
+        $queryText = $this->queryFactory->get()->getQueryText();
+        $pageCollection->addSearchFilter($queryText);
 
         return $pageCollection;
     }
