@@ -127,24 +127,26 @@ class DataProvider implements DataProviderInterface
     public function getItems()
     {
         $result = [];
-        $pageCollection = $this->getCmsPageCollection();
-        if ($pageCollection) {
-            foreach ($pageCollection as $page) {
-                $item = $this->itemFactory->create(
-                    [
-                        'title' => $page->getTitle(),
-                        'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                        'type'  => $this->getType(),
-                    ]
-                );
+        if ($this->configurationHelper->isEnabled($this->getType())) {
+            $pageCollection = $this->getCmsPageCollection();
+            if ($pageCollection) {
+                foreach ($pageCollection as $page) {
+                    $item = $this->itemFactory->create(
+                        [
+                            'title' => $page->getTitle(),
+                            'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
+                            'type'  => $this->getType(),
+                        ]
+                    );
 
-                $this->eventManager->dispatch(
-                    'smile_elasticsuite_cms_search_autocomplete_page_item',
-                    ['page' => $page, 'item' => $item]
-                );
+                    $this->eventManager->dispatch(
+                        'smile_elasticsuite_cms_search_autocomplete_page_item',
+                        ['page' => $page, 'item' => $item]
+                    );
 
-                $result[] = $item;
-            }
+                    $result[] = $item;
+                }
+            }    
         }
 
         return $result;
