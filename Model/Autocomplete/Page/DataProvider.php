@@ -118,16 +118,18 @@ class DataProvider implements DataProviderInterface
     public function getItems()
     {
         $result = [];
-        $pageCollection = $this->getCmsPageCollection();
-        if ($pageCollection) {
-            foreach ($pageCollection as $page) {
-                $result[] = $this->itemFactory->create(
-                    [
-                        'title' => $page->getTitle(),
-                        'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                        'type'  => $this->getType(),
-                    ]
-                );
+        if ($this->configurationHelper->isEnabled($this->getType())) {
+            $pageCollection = $this->getCmsPageCollection();
+            if ($pageCollection) {
+                foreach ($pageCollection as $page) {
+                    $result[] = $this->itemFactory->create(
+                        [
+                            'title' => $page->getTitle(),
+                            'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
+                            'type'  => $this->getType(),
+                        ]
+                    );
+                }
             }
         }
 
