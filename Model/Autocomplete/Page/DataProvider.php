@@ -20,6 +20,7 @@ use Magento\Store\Model\StoreManagerInterface;
 use Smile\ElasticsuiteCore\Helper\Autocomplete as ConfigurationHelper;
 use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Fulltext\CollectionFactory as CmsCollectionFactory;
 use Smile\ElasticsuiteCore\Model\Autocomplete\Terms\DataProvider as TermDataProvider;
+use Magento\Framework\Event\ManagerInterface as EventManager;
 
 /**
  * Catalog product autocomplete data provider.
@@ -72,6 +73,11 @@ class DataProvider implements DataProviderInterface
     protected $storeManager;
 
     /**
+     * @var EventManager
+     */
+    protected $eventManager;
+
+    /**
      * @var string Autocomplete result type
      */
     private $type;
@@ -85,6 +91,7 @@ class DataProvider implements DataProviderInterface
      * @param CmsCollectionFactory  $cmsCollectionFactory Cms collection factory.
      * @param ConfigurationHelper   $configurationHelper  Autocomplete configuration helper.
      * @param StoreManagerInterface $storeManager         Store manager.
+     * @param EventManager          $eventManager         Event dispatcher
      * @param string                $type                 Autocomplete provider type.
      */
     public function __construct(
@@ -94,6 +101,7 @@ class DataProvider implements DataProviderInterface
         CmsCollectionFactory $cmsCollectionFactory,
         ConfigurationHelper $configurationHelper,
         StoreManagerInterface $storeManager,
+        EventManager $eventManager,
         $type = self::AUTOCOMPLETE_TYPE
     ) {
         $this->itemFactory          = $itemFactory;
@@ -101,6 +109,7 @@ class DataProvider implements DataProviderInterface
         $this->termDataProvider     = $termDataProvider;
         $this->cmsCollectionFactory = $cmsCollectionFactory;
         $this->configurationHelper  = $configurationHelper;
+        $this->eventManager         = $eventManager;
         $this->type                 = $type;
         $this->storeManager         = $storeManager;
     }
@@ -118,17 +127,26 @@ class DataProvider implements DataProviderInterface
     public function getItems()
     {
         $result = [];
-        $pageCollection = $this->getCmsPageCollection();
-        if ($pageCollection) {
-            foreach ($pageCollection as $page) {
-                $result[] = $this->itemFactory->create(
-                    [
-                        'title' => $page->getTitle(),
-                        'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
-                        'type'  => $this->getType(),
-                    ]
-                );
-            }
+        if ($this->configurationHelper->isEnabled($this->getType())) {
+            $pageCollection = $this->getCmsPageCollection();
+            if ($pageCollection) {
+                foreach ($pageCollection as $page) {
+                    $item = $this->itemFactory->create(
+                        [
+                            'title' => $page->getTitle(),
+                            'url'   => $this->storeManager->getStore()->getBaseUrl(). $page->getIdentifier(),
+                            'type'  => $this->getType(),
+                        ]
+                    );
+
+                    $this->eventManager->dispatch(
+                        'smile_elasticsuite_cms_search_autocomplete_page_item',
+                        ['page' => $page, 'item' => $item]
+                    );
+
+                    $result[] = $item;
+                }
+            }    
         }
 
         return $result;
@@ -159,17 +177,12 @@ class DataProvider implements DataProviderInterface
      */
     private function getCmsPageCollection()
     {
-        $pageCollection = null;
-        $suggestedTerms = $this->getSuggestedTerms();
-        $terms          = [$this->queryFactory->get()->getQueryText()];
-
-        if (!empty($suggestedTerms)) {
-            $terms = array_merge($terms, $suggestedTerms);
-        }
-
         $pageCollection = $this->cmsCollectionFactory->create();
-        $pageCollection->addSearchFilter($terms);
+        
         $pageCollection->setPageSize($this->getResultsPageSize());
+        
+        $queryText = $this->queryFactory->get()->getQueryText();
+        $pageCollection->addSearchFilter($queryText);
 
         return $pageCollection;
     }
