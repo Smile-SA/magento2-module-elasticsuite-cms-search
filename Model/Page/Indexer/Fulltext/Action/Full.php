@@ -12,6 +12,7 @@
  */
 namespace Smile\ElasticsuiteCms\Model\Page\Indexer\Fulltext\Action;
 
+use Magento\Framework\App\State;
 use Magento\Framework\Filter\RemoveTags;
 use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full as ResourceModel;
 use Magento\Cms\Model\Template\FilterProvider;
@@ -46,6 +47,7 @@ class Full
      * @var \Magento\Framework\Filter\RemoveTags
      */
     private $stripTags;
+    private State $state;
 
     /**
      * Constructor.
@@ -59,12 +61,14 @@ class Full
         ResourceModel $resourceModel,
         FilterProvider $filterProvider,
         AreaList $areaList,
-        RemoveTags $stripTags
+        RemoveTags $stripTags,
+        State $state
     ) {
         $this->resourceModel  = $resourceModel;
         $this->filterProvider = $filterProvider;
         $this->areaList       = $areaList;
         $this->stripTags      = $stripTags;
+        $this->state = $state;
     }
 
     /**
@@ -77,18 +81,19 @@ class Full
      */
     public function rebuildStoreIndex($storeId, $cmsPageIds = null)
     {
-        $lastCmsPageId = 0;
+        yield from $this->state->emulateAreaCode(Area::AREA_FRONTEND, function() use ($storeId, $cmsPageIds) {
+            $lastCmsPageId = 0;
+            $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
 
-        $this->areaList->getArea(Area::AREA_FRONTEND)->load(Area::PART_DESIGN);
-
-        do {
-            $cmsPages = $this->getSearchableCmsPage($storeId, $cmsPageIds, $lastCmsPageId);
-            foreach ($cmsPages as $pageData) {
-                $pageData = $this->processPageData($pageData);
-                $lastCmsPageId = (int) $pageData['page_id'];
-                yield $lastCmsPageId => $pageData;
-            }
-        } while (!empty($cmsPages));
+            do {
+                $cmsPages = $this->getSearchableCmsPage($storeId, $cmsPageIds, $lastCmsPageId);
+                foreach ($cmsPages as $pageData) {
+                    $pageData = $this->processPageData($pageData);
+                    $lastCmsPageId = (int) $pageData['page_id'];
+                    yield $lastCmsPageId => $pageData;
+                }
+            } while (!empty($cmsPages));
+        });
     }
 
     /**
