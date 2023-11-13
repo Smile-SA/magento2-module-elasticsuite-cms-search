@@ -32,7 +32,7 @@
         "magento/module-catalog": ">=100.1.0",
         "magento/module-catalog-search": ">=100.1.0",
         "magento/magento-composer-installer": "*",
-        "smile/elasticsuite": "^2.6.0"
+        "smile/elasticsuite": "^2.11.0"
     },
     "require-dev": {
         "smile/magento2-smilelab-quality-suite": "^1.0.4"
