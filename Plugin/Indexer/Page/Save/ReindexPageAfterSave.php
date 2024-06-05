@@ -55,9 +55,13 @@ class ReindexPageAfterSave
         \Magento\Framework\Model\ResourceModel\Db\AbstractDb $result,
         \Magento\Framework\Model\AbstractModel $page
     ) {
-        $cmsPageIndexer = $this->indexerRegistry->get(Fulltext::INDEXER_ID);
-        if (!$cmsPageIndexer->isScheduled()) {
-            $cmsPageIndexer->reindexRow($page->getId());
+        $isSearchable  = $page->getIsSearchable();
+        $wasSearchable = ($page->dataHasChangedFor('is_searchable') && (int) $page->getOrigData('is_searchable') === 1);
+        if ($isSearchable || $wasSearchable) {
+            $cmsPageIndexer = $this->indexerRegistry->get(Fulltext::INDEXER_ID);
+            if (!$cmsPageIndexer->isScheduled()) {
+                $cmsPageIndexer->reindexRow($page->getId());
+            }
         }
 
         return $result;
