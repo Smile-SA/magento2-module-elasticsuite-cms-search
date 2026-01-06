@@ -17,6 +17,7 @@ use Smile\ElasticsuiteCms\Model\ResourceModel\Page\Indexer\Fulltext\Action\Full 
 use Magento\Cms\Model\Template\FilterProvider;
 use Magento\Framework\App\Area;
 use Magento\Framework\App\AreaList;
+use Magento\Framework\App\State;
 use Magento\Store\Model\App\Emulation;
 
 /**
@@ -49,23 +50,31 @@ class Full
     private $stripTags;
 
     /**
+     * @var \Magento\Framework\App\State
+     */
+    private $appState;
+
+    /**
      * Constructor.
      *
      * @param ResourceModel  $resourceModel  Indexer resource model.
      * @param FilterProvider $filterProvider Model template filter provider.
      * @param AreaList       $areaList       Area List
      * @param RemoveTags     $stripTags      HTML Tags remover
+     * @param State          $appState       Application state
      */
     public function __construct(
         ResourceModel $resourceModel,
         FilterProvider $filterProvider,
         AreaList $areaList,
-        RemoveTags $stripTags
+        RemoveTags $stripTags,
+        State $appState
     ) {
         $this->resourceModel  = $resourceModel;
         $this->filterProvider = $filterProvider;
         $this->areaList       = $areaList;
         $this->stripTags      = $stripTags;
+        $this->appState       = $appState;
     }
 
     /**
@@ -122,9 +131,16 @@ class Full
     private function processPageData($pageData)
     {
         if (isset($pageData['content'])) {
-            $content = html_entity_decode($this->filterProvider->getPageFilter()->filter($pageData['content']));
-            $content = $this->stripTags->filter($content);
-            $content = preg_replace('/\s\s+/', ' ', $content);
+            $content = $this->appState->emulateAreaCode(
+                Area::AREA_FRONTEND,
+                function ($content) {
+                    $content = html_entity_decode($this->filterProvider->getPageFilter()->filter($content));
+                    $content = $this->stripTags->filter($content);
+
+                    return preg_replace('/\s\s+/', ' ', $content);
+                },
+                [$pageData['content']]
+            );
             $pageData['content'] = $content;
         }
 
