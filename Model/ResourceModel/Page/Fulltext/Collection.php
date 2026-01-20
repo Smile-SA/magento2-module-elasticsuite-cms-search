@@ -123,9 +123,15 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
     /**
      * {@inheritDoc}
      */
-    public function setOrder($attribute, $dir = \Magento\Framework\DB\Select::SQL_DESC)
+    public function setOrder($attribute, $dir = self::SORT_ORDER_DESC)
     {
-        throw new \LogicException("Sorting on multiple stores is not allowed in search engine collections.");
+        if (!isset($this->_orders[$attribute]) || ($this->_orders[$attribute] !== $dir)) {
+            $this->_orders[$attribute] = $dir;
+            // Reset Filter Rendering, because otherwise the new ordering will not be picked up by ::_renderFiltersBefore.
+            $this->_isFiltersRendered = false;
+        }
+
+        return $this;
     }
 
     /**
@@ -200,6 +206,17 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         return $this;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public function addAttributeToSort($attribute, $dir = self::SORT_ORDER_ASC)
+    {
+        if ($attribute !== 'page_id') {
+            return $this->setOrder($attribute, $dir);
+        }
+
+        return $this;
+    }
 
     /**
      * Return field faceted data from faceted search result.
@@ -224,6 +241,17 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         }
 
         return $result;
+    }
+
+    /**
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
+     *
+     * {@inheritDoc}
+     */
+    protected function _renderOrders()
+    {
+        // Sort orders are managed through the search engine and are added through the prepareRequest method.
+        return $this;
     }
 
     /**
