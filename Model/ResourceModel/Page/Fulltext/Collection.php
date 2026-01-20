@@ -200,6 +200,32 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         return $this;
     }
 
+
+    /**
+     * Return field faceted data from faceted search result.
+     *
+     * @param string $field Facet field.
+     *
+     * @return array
+     */
+    public function getFacetedData($field)
+    {
+        $this->_renderFilters();
+        $result = [];
+        $aggregations = $this->queryResponse->getAggregations();
+
+        $bucket = $aggregations->getBucket($field);
+
+        if ($bucket) {
+            foreach ($bucket->getValues() as $value) {
+                $metrics = $value->getMetrics();
+                $result[$value->getValue()] = $metrics;
+            }
+        }
+
+        return $result;
+    }
+
     /**
      * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      *
