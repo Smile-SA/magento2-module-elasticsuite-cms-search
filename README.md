@@ -13,12 +13,16 @@ Magento Version                                     | Module Version
 Magento **2.0.x** Opensource (CE) / Commerce (EE)   |**2.0.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.0.0```
 Magento **2.1.x** Opensource (CE) / Commerce (EE)   |**2.1.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.1.0```
 Magento **2.2.x** Opensource (CE) / Commerce (EE)   |**2.1.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.1.0```
+...                                                 | ...
+Magento **2.4.x < 2.4.6** Opensource (CE) / Commerce (EE)   | **2.10.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.10.0```
+Magento **2.4.x >= 2.4.6 && < 2.4.9** Opensource (CE) / Commerce (EE)   | **2.11.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.11.0```
+Magento **2.4.x > 2.4.9** Opensource (CE) / Commerce (EE)   | **2.12.x** latest release : ```composer require smile/module-elasticsuite-cms-search ~2.12.0```
 
 ### Requirements
 
 The module requires :
 
-- [ElasticSuite](https://github.com/Smile-SA/elasticsuite) > 2.1.*
+- [ElasticSuite](https://github.com/Smile-SA/elasticsuite)
 
 ### How to use
 
