@@ -283,7 +283,7 @@ class Collection extends \Magento\Cms\Model\ResourceModel\Page\Collection
         $this->getSelect()->where('main_table.page_id IN (?)', ['in' => $docIds]);
         $this->_pageSize = false;
 
-        return parent::_renderFiltersBefore();
+        parent::_renderFiltersBefore();
     }
 
     /**
